@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent ()}} {% endblock %}
+
+{% block body %}
+    <style>
+        h2.a {
+            text-align: center;
+            background: slategray;
+            color: cyan;
+        }
+    </style>
+    <body>
+    <div id="mainer" class="mainer">
+        <div class="container-fluid container-max-width-xl">
+            <div class="mt-4 flex">
+                <h2 class="a"><b>Apple Shop</b></h2>
+                <h3><b>Choose Type</b></h3>
+
+                <ul class="nav nav-tabs">
+                    {% for genre in genres %}
+                        <li class="nav-item">
+                            <a href="{{ path('waterByGenre',{'id':genre.id}) }}"
+                               class="nav-link active">{{ genre.GenreName }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <div class="mt-4 justify-content-between line-b-f">
+                    <tbody>
+                    {% for water in waters %}
+                        <div class="col item line-b no-flag"></div>
+                        <div class="item-picture">
+                            <td><img src="{{ asset('uploads/Product/' ~ product.Image) }}" height="400px" width="300px"></td>
+                        </div>
+                        <div class="item-name">
+                            <td><h4><b> {{ product.Name }}</b></h4></td>
+                        </div>
+                        <div class="item-price">
+                            <td><b>Price: </b>{{ product.Price }}</td>.000 VND
+                        </div>
+                        <div class="item-text">
+                            <td><b>Description: </b>{{ product.Description }}</td>
+                        </div>
+                        <div class="item-buttons">
+                            <td>
+                                <a href="{{ path('app_view_product', {'id':product.id})}}" class="btn btn-success">View</a>
+
+                                <a href="{{ path('app_edit_product', {'id':product.id})}}" class="btn btn-success">Publish</a>
+
+                                <a href="{{ path('app_delete_product', {'id':product.id})}}" class="btn btn-warning">Delete</a>
+                            </td>
+                        </div>
+                    {% endfor %}
+                    </tbody>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}

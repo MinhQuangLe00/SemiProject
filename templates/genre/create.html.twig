@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ form_start(form) }}
+    <div class="form-group">
+        <label for="genre">Genre Name:</label>
+        {{ form_widget(form.GenreName,{
+            'attr':{
+                'class':'form-control',
+                'placeholder': 'Genre name'
+            }
+        }) }}
+    </div>
+
+    <div class="mt-md-2 flex-column buttons">
+        <input type="submit" name="app_create" value="Create" class="btn btn-primary"/>
+        {#                        <input type="submit" name="app_edit" value="Edit" class="btn btn-primary"/>#}
+        {#                        <input type="submit" name="app_delete" value="Delete" class="btn btn-primary"/>#}
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}
